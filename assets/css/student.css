@@ -1,0 +1,146 @@
+body {
+  background: radial-gradient(circle at 10% 20%, rgba(128,0,0,0.25), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(255,201,23,0.25), transparent 40%),
+              #f5f6fa;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  height: 100vh;
+  background: linear-gradient(135deg, #6b0000, #800000);
+  color: white;
+  position: fixed;
+  width: 210px;
+  padding: 16px 14px;
+}
+
+.sidebar h3 {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
+
+.nav-item {
+  padding: 9px 10px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size: 0.83rem;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.main {
+  margin-left: 225px;
+  padding: 20px 24px;
+}
+
+.main h2 {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.main p.text-muted {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.card-box {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.card-box h6 {
+  font-size: 0.85rem;
+}
+
+.card-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2px;
+}
+
+.card-box small {
+  font-size: 0.75rem;
+}
+
+.upload-box {
+  border: 2px dashed #800000;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fffafa;
+  font-size: 0.82rem;
+}
+
+.btn-custom {
+  background: linear-gradient(135deg, #800000, #ff1717);
+  border: none;
+  color: white;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: bold;
+}
+
+.pending { background: #fff3cd; color: #856404; }
+.approved { background: #d4edda; color: #155724; }
+.rejected { background: #f8d7da; color: #721c24; }
+
+.module { display: none; }
+.active-module { display: block; }
+
+.list-group-item {
+  font-size: 0.82rem;
+  padding: 7px 12px;
+}
+
+.progress {
+  height: 16px;
+}
+
+.row.g-3 {
+  --bs-gutter-y: 0.6rem;
+  --bs-gutter-x: 0.6rem;
+}
+
+.mt-2 { margin-top: 0.4rem !important; }
+.mb-4 { margin-bottom: 0.8rem !important; }
+.mb-3 { margin-bottom: 0.5rem !important; }
+
+label {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.form-control, .form-select {
+  font-size: 0.82rem;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.table {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .main {
+    margin-left: 0;
+  }
+}

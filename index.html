@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PapeLESS - Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+<body>
+
+<div class="container-fluid d-flex align-items-center justify-content-center py-5">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-lg-9 col-xl-8">
+
+      <div class="login-wrapper">
+        <div class="row g-0">
+
+          /* LEFT PANEL */
+          <div class="col-md-5 left-panel d-flex flex-column justify-content-center">
+
+            <div class="mb-3 text-center text-md-start">
+              <h2 class="fw-bold mb-1">PapeLESS</h2>
+              <small class="opacity-75">OJT Document Tracking System</small>
+            </div>
+
+            <div id="featureCarousel"
+                 class="carousel slide w-100 mb-3"
+                 data-bs-ride="carousel"
+                 data-bs-interval="2500">
+
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <div class="feature-box">
+                    <div class="feature-icon">📄</div>
+                    <h5 class="fw-bold">Paperless System</h5>
+                    <p class="small">No printing. Everything digital.</p>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <h5 class="fw-bold">Real-Time Tracking</h5>
+                    <p class="small">Instant updates & monitoring.</p>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <h5 class="fw-bold">Institution Ready</h5>
+                    <p class="small">Built for students & advisers.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <p class="mb-4 small">
+              A smart platform for managing OJT requirements — submit documents,
+              track progress, and stay updated in real time.
+            </p>
+
+          </div>
+
+          /* RIGHT LOGIN */
+          <div class="col-md-7">
+            <div class="login-card">
+
+              <div class="text-center mb-4">
+                <h4 class="brand-title">Welcome Back</h4>
+                <p class="text-muted">Login to your OJT portal</p>
+              </div>
+
+              <form>
+
+                <div class="mb-3">
+                  <label>Username</label>
+                  <input type="text" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label>Password</label>
+                  <input type="password" id="password" class="form-control">
+                </div>
+
+                <div class="mb-3 d-flex justify-content-between">
+                  <div>
+                    <input type="checkbox" id="showPass">
+                    <label>Show</label>
+                  </div>
+                  <a href="#">Forgot?</a>
+                </div>
+
+                <button class="btn btn-custom w-100">Login</button>
+
+                <div class="text-center mt-3">
+                  <span>No account?</span>
+                  <a href="signup.html" onclick="goSignup(event)">Sign Up</a>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/auth.js"></script>
+
+</body>
+</html>

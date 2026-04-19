@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PapeLESS - Sign Up</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  /* SHARED TO AUTH CSS (login signup) */
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+<body class="signup-page">
+
+<div class="container-fluid d-flex align-items-center justify-content-center py-4">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-lg-9 col-xl-8">
+
+      <div class="login-wrapper">
+        <div class="row g-0">
+
+          /* LEFT PANEL */
+          <div class="col-md-5 left-panel d-flex flex-column justify-content-center">
+
+            <div class="mb-2 text-center text-md-start">
+              <h2 class="fw-bold mb-1">PapeLESS</h2>
+              <small class="opacity-75">OJT Document Tracking System</small>
+            </div>
+
+            <div id="featureCarousel"
+                 class="carousel slide w-100 mb-2"
+                 data-bs-ride="carousel"
+                 data-bs-interval="3000">
+
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <div class="feature-box">
+                    <div class="feature-icon">📄</div>
+                    <h5 class="fw-bold">Paperless System</h5>
+                    <p class="small">No printing. Everything digital.</p>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <h5 class="fw-bold">Real-Time Tracking</h5>
+                    <p class="small">Instant updates & monitoring.</p>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <h5 class="fw-bold">Institution Ready</h5>
+                    <p class="small">Built for students & advisers.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <p class="small">
+              Join PapeLESS and manage your OJT requirements digitally and efficiently.
+            </p>
+
+          </div>
+
+          /* RIGHT SIGNUP */
+          <div class="col-md-7">
+            <div class="login-card">
+
+              <div class="text-center mb-3">
+                <h4 class="brand-title">Create Account</h4>
+                <p class="text-muted">Register to start your OJT journey</p>
+              </div>
+
+              <form>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label>Course</label>
+                    <input type="text" class="form-control">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label>Year Level</label>
+                    <select class="form-select">
+                      <option>Select</option>
+                      <option>1st Year</option>
+                      <option>2nd Year</option>
+                      <option>3rd Year</option>
+                      <option>4th Year</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label>Student Number</label>
+                  <input type="text" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label>Password</label>
+                  <input type="password" id="password" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label>Confirm Password</label>
+                  <input type="password" id="confirmPassword" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <input type="checkbox" id="showPass">
+                  <label>Show Password</label>
+                </div>
+
+                <button class="btn btn-custom w-100">Sign Up</button>
+
+                <div class="text-center mt-2">
+                  <span>Already have an account?</span>
+                  <a href="index.html" onclick="goLogin(event)">Login</a>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SHARED AUTH JS (login signup) -->
+<script src="assets/js/auth.js"></script>
+
+</body>
+</html>

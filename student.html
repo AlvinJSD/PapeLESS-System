@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PapeLESS - Student Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/student.css">
+</head>
+
+<body>
+/* SIDEBAR */
+<div class="sidebar">
+  <h3>PapeLESS</h3>
+
+  <div class="nav-item" onclick="showModule('dashboard')">🏠 Dashboard</div>
+  <div class="nav-item" onclick="showModule('submit')">📄 Submit Document</div>
+  <div class="nav-item" onclick="showModule('files')">📁 My Files</div>
+  <div class="nav-item" onclick="showModule('progress')">📊 Progress</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+/* DASHBOARD */
+<div id="dashboard" class="module active-module">
+  <h2 class="fw-bold">Dashboard</h2>
+  <p class="text-muted">Overview of your OJT progress</p>
+
+  /* QUICK ACTIONS */
+  <div class="row g-3 mt-2 mb-4">
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h6 class="fw-bold">Upload Document</h6>
+        <p class="text-muted small">Submit your requirements</p>
+        <button class="btn btn-custom btn-sm" onclick="showModule('submit')">Go</button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h6 class="fw-bold">View Files</h6>
+        <p class="text-muted small">Check your submissions</p>
+        <button class="btn btn-custom btn-sm" onclick="showModule('files')">Open</button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h6 class="fw-bold">Track Progress</h6>
+        <p class="text-muted small">See completion status</p>
+        <button class="btn btn-custom btn-sm" onclick="showModule('progress')">View</button>
+      </div>
+    </div>
+  </div>
+
+  /* STATS */
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>5</h3>
+        <small>Submitted Documents</small>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>2</h3>
+        <small>Pending Review</small>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>3</h3>
+        <small>Approved</small>
+      </div>
+    </div>
+  </div>
+
+  /* LOWER SECTION */
+  <div class="row g-3">
+
+    /* DEADLINES */
+    <div class="col-lg-6">
+      <div class="card-box">
+        <h6 class="fw-bold mb-3">📅 Upcoming Deadlines</h6>
+
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between">
+            OJT Weekly Report
+            <span class="text-danger">Apr 20</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            Attendance Sheet
+            <span class="text-warning">Apr 22</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            Final Report
+            <span class="text-muted">May 5</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    /* NOTIFICATIONS */
+    <div class="col-lg-6">
+      <div class="card-box">
+        <h6 class="fw-bold mb-3">🔔 Notifications</h6>
+
+        <div class="mb-2">
+          <small class="text-success">✔ Attendance approved</small>
+        </div>
+
+        <div class="mb-2">
+          <small class="text-warning">⏳ Journal Week 1 pending</small>
+        </div>
+
+        <div class="mb-2">
+          <small class="text-danger">✖ Report needs revision</small>
+        </div>
+      </div>
+    </div>
+
+    /*PROGRESS BAR */
+    <div class="col-12">
+      <div class="card-box">
+        <h6 class="fw-bold mb-2">📊 OJT Completion</h6>
+
+        <div class="progress">
+          <div class="progress-bar bg-success" style="width: 60%">60%</div>
+        </div>
+
+        <small class="text-muted">You are halfway done. Keep going!</small>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+/* SUBMIT DOCUMENT */
+<div id="submit" class="module">
+  <h2 class="fw-bold">Submit Document</h2>
+
+  <div class="card-box mt-3">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Document Type</label>
+        <select class="form-select">
+          <option>OJT Journal</option>
+          <option>Attendance</option>
+          <option>Report</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label>Date</label>
+        <input type="date" class="form-control">
+      </div>
+    </div>
+
+    <div class="upload-box text-center">
+      <p>Upload your file</p>
+      <input type="file" class="form-control mb-3">
+      <button class="btn-custom">Submit</button>
+    </div>
+  </div>
+</div>
+
+/* FILES */
+<div id="files" class="module">
+  <h2 class="fw-bold">My Files</h2>
+
+  <div class="card-box mt-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Journal Week 1</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+
+        <tr>
+          <td>Attendance</td>
+          <td><span class="status approved">Approved</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+/* PROGRESS */
+<div id="progress" class="module">
+  <h2 class="fw-bold">Progress</h2>
+
+  <div class="card-box mt-3">
+    <label>Completion</label>
+    <div class="progress">
+      <div class="progress-bar bg-success" style="width: 60%">60%</div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/student.js"></script>
+
+</body>
+</html>
