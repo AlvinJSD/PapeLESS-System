@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>PapeLESS - Admin</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- YOUR ADMIN CSS -->
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h3>PapeLESS</h3>
+
+  <div class="nav-item">🏠 Dashboard</div>
+  <div class="nav-item">👥 Users</div>
+  <div class="nav-item">📄 Submissions</div>
+  <div class="nav-item">📊 Reports</div>
+  <div class="nav-item" onclick="logout()">🚪 Logout</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <h2 class="fw-bold">Admin Dashboard</h2>
+  <p class="text-muted">System overview & control panel</p>
+
+  <div class="row g-3 mt-3">
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>120</h3>
+        <small>Total Users</small>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>45</h3>
+        <small>Pending Documents</small>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box text-center">
+        <h3>78</h3>
+        <small>Approved</small>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- YOUR ADMIN JS -->
+<script src="assets/js/admin.js"></script>
+
+</body>
+</html>

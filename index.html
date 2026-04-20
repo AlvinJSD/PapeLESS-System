@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PapeLESS - Login</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/auth.css">
 </head>
@@ -75,16 +76,39 @@
                 <p class="text-muted">Login to your OJT portal</p>
               </div>
 
-              <form>
+              <!-- LOGIN FORM -->
+              <form id="loginForm">
 
+                <!-- STUDENT FIELD -->
+                <div class="mb-3" id="studentField">
+                  <label>Student Number</label>
+                  <input type="text" id="studentNumber" class="form-control">
+                </div>
+
+                <!-- ADVISER FIELD -->
+                <div class="mb-3" id="emailField" style="display:none;">
+                  <label>Email</label>
+                  <input type="email" id="email" class="form-control">
+                </div>
+
+                <!-- SHARED -->
                 <div class="mb-3">
-                  <label>Username</label>
-                  <input type="text" class="form-control">
+                  <label>Birthdate</label>
+                  <input type="date" id="birthdate" class="form-control">
                 </div>
 
                 <div class="mb-3">
                   <label>Password</label>
                   <input type="password" id="password" class="form-control">
+                </div>
+
+                <!-- ROLE -->
+                <div class="mb-3">
+                  <label>User Role</label>
+                  <select id="role" class="form-select">
+                    <option value="student">Student</option>
+                    <option value="adviser">Adviser</option>
+                  </select>
                 </div>
 
                 <div class="mb-3 d-flex justify-content-between">
@@ -95,11 +119,11 @@
                   <a href="#">Forgot?</a>
                 </div>
 
-                <button class="btn btn-custom w-100">Login</button>
+                <button type="submit" class="btn btn-custom w-100">Login</button>
 
                 <div class="text-center mt-3">
                   <span>No account?</span>
-                  <a href="signup.html" onclick="goSignup(event)">Sign Up</a>
+                  <a href="signup.html">Sign Up</a>
                 </div>
 
               </form>
@@ -114,8 +138,14 @@
   </div>
 </div>
 
+<div class="admin-access" onclick="openAdmin()" title="Coordinator Access">
+  ⚙️
+</div>
+
+<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/auth.js"></script>
+
 
 </body>
 </html>
