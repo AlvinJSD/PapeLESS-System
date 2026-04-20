@@ -6,14 +6,12 @@
   <title>PapeLESS - Sign Up</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- SHARED TO AUTH CSS (login signup) -->
   <link rel="stylesheet" href="assets/css/auth.css">
 </head>
 
 <body class="signup-page">
 
-<div class="container-fluid d-flex align-items-center justify-content-center py-4">
+<div class="container-fluid d-flex align-items-center justify-content-center py-2git">
   <div class="row justify-content-center w-100">
     <div class="col-12 col-lg-9 col-xl-8">
 
@@ -77,6 +75,7 @@
                 <p class="text-muted">Register to start your OJT journey</p>
               </div>
 
+              <!-- FORM -->
               <form>
 
                 <div class="row">
@@ -109,6 +108,12 @@
                   </div>
                 </div>
 
+                <!-- ✅ BIRTHDATE ADDED -->
+                <div class="mb-3">
+                  <label>Birthdate</label>
+                  <input type="date" class="form-control">
+                </div>
+
                 <div class="mb-3">
                   <label>Student Number</label>
                   <input type="text" class="form-control">
@@ -133,7 +138,7 @@
 
                 <div class="text-center mt-2">
                   <span>Already have an account?</span>
-                  <a href="index.html" onclick="goLogin(event)">Login</a>
+                  <a href="index.html">Login</a>
                 </div>
 
               </form>
@@ -149,8 +154,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- SHARED AUTH JS (login signup) -->
 <script src="assets/js/auth.js"></script>
 
 </body>
