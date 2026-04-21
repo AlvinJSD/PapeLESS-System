@@ -1,11 +1,11 @@
 
 // ===============================
-// 🚀 RUN AFTER PAGE LOAD
+//  RUN AFTER PAGE LOAD
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
 
   // ===============================
-  // 👁 SHOW PASSWORD
+  //  SHOW PASSWORD
   // ===============================
   const showPass = document.getElementById("showPass");
   const password = document.getElementById("password");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // 🔄 ROLE TOGGLE (Student / Adviser)
+  //  ROLE TOGGLE (Student / Adviser)
   // ===============================
   const role = document.getElementById("role");
   const studentField = document.getElementById("studentField");
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // 📅 BIRTHDATE FORMAT DISPLAY
+  //  BIRTHDATE FORMAT DISPLAY
   // ===============================
   const birthInput = document.getElementById("birthdate");
   const birthText = document.getElementById("birthdateText");
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // 👤 SAMPLE USERS (EMBEDDED)
+  //  SAMPLE USERS (EMBEDDED)
   // ===============================
   const users = [
     {
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   // ===============================
-  // 🔐 LOGIN SYSTEM
+  //  LOGIN SYSTEM
   // ===============================
   const loginForm = document.getElementById("loginForm");
 
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ===============================
-// 🔁 PAGE TRANSITIONS
+//  PAGE TRANSITIONS
 // ===============================
 function goSignup(event) {
   event.preventDefault();
@@ -171,8 +171,53 @@ function goLogin(event) {
 }
 
 // ===============================
-// ⚙️ ADMIN ACCESS
+//  ADMIN ACCESS
 // ===============================
 function openAdmin() {
   window.location.href = "admin.html";
 }
+
+
+// =======================
+// FORGOT PASSWORD MODAL
+// =======================
+function openForgot() {
+  document.getElementById("forgotModal").style.display = "flex";
+}
+
+function closeForgot() {
+  document.getElementById("forgotModal").style.display = "none";
+}
+
+// =======================
+// HANDLE REQUEST
+// =======================
+document.addEventListener("DOMContentLoaded", () => {
+
+  const forgotForm = document.getElementById("forgotForm");
+
+  if (forgotForm) {
+    forgotForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("fpEmail").value;
+      const studentNumber = document.getElementById("fpStudentNumber").value;
+      const birthdate = document.getElementById("fpBirthdate").value;
+
+      //  simulate verification
+      const user = users.find(u =>
+        u.role === "student" &&
+        u.studentNumber === studentNumber &&
+        u.birthdate === birthdate
+      );
+
+      if (user) {
+        alert("Request sent to admin for verification.\n(Next step: email system)");
+        closeForgot();
+      } else {
+        alert("User not found or incorrect details.");
+      }
+    });
+  }
+
+});

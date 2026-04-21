@@ -6,7 +6,7 @@
   <title>PapeLESS - Adviser Dashboard</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/adviser.css">
+  <link rel="stylesheet" href="assets/css/adviser.css">
 </head>
 
 <body>
@@ -14,131 +14,521 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
   <h3>PapeLESS</h3>
-
-  <div class="nav-item" onclick="showModule('dashboard')">🏠 Dashboard</div>
+  <div class="nav-item" onclick="showModule('dashboard')">🏠 Home</div>
   <div class="nav-item" onclick="showModule('review')">📄 Review Documents</div>
   <div class="nav-item" onclick="showModule('students')">👥 Students</div>
   <div class="nav-item" onclick="showModule('reports')">📊 Reports</div>
+  <div class="nav-item" onclick="window.location.href='index.html'">Logout</div>
 </div>
 
+<!-- MAIN -->
 <div class="main">
-  <!-- DASHBOARD -->
+
+  <!-- ── DASHBOARD ──────────────────────────────────────────────────────────── -->
   <div id="dashboard" class="module active-module">
     <h2 class="fw-bold">Adviser Dashboard</h2>
-    <p class="text-muted">Monitor and manage student submissions</p>
+    <p class="text-muted">Monitor and manage student OJT submissions</p>
 
-    <div class="row g-3 mt-3">
-      <div class="col-md-4">
+    <!-- STATS -->
+    <div class="row g-3 mt-2 mb-4">
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>18</h3>
+          <small>Total Students</small>
+        </div>
+      </div>
+      <div class="col-md-3">
         <div class="card-box text-center">
           <h3>12</h3>
           <small>Total Submissions</small>
         </div>
       </div>
-
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card-box text-center">
           <h3>5</h3>
           <small>Pending Review</small>
         </div>
       </div>
-
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card-box text-center">
           <h3>7</h3>
           <small>Approved</small>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- REVIEW -->
+    <!-- LOWER SECTION -->
+    <div class="row g-3">
+
+      <!-- RECENT SUBMISSIONS -->
+      <div class="col-lg-7">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">🕐 Recent Submissions</h6>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Student</th>
+                  <th>Document</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Juan Dela Cruz</td>
+                  <td>OJT Journal Week 1</td>
+                  <td>Apr 10, 2026</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Maria Santos</td>
+                  <td>Attendance Sheet</td>
+                  <td>Apr 8, 2026</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Carlo Reyes</td>
+                  <td>Final Report</td>
+                  <td>Apr 5, 2026</td>
+                  <td><span class="status approved">Approved</span></td>
+                </tr>
+                <tr>
+                  <td>Ana Lim</td>
+                  <td>OJT Journal Week 2</td>
+                  <td>Apr 3, 2026</td>
+                  <td><span class="status rejected">Revision</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK ACTIONS + REMINDERS -->
+      <div class="col-lg-5 d-flex flex-column gap-3">
+
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">⚡ Quick Actions</h6>
+          <div class="d-flex flex-column gap-2">
+            <button class="btn-custom w-100 text-start" onclick="showModule('review')">
+              📄 &nbsp;Review Pending Documents
+            </button>
+            <button class="btn-custom w-100 text-start" onclick="showModule('students')">
+              👥 &nbsp;View Student List
+            </button>
+            <button class="btn-custom w-100 text-start" onclick="showModule('reports')">
+              📊 &nbsp;Generate Report
+            </button>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">📌 Pending Breakdown</h6>
+          <div class="status-item">
+            <div><strong>OJT Journals</strong></div>
+            <span class="status pending">3 pending</span>
+          </div>
+          <div class="status-item">
+            <div><strong>Attendance Sheets</strong></div>
+            <span class="status pending">1 pending</span>
+          </div>
+          <div class="status-item">
+            <div><strong>Final Reports</strong></div>
+            <span class="status pending">1 pending</span>
+          </div>
+          <div class="mt-3">
+            <small class="text-muted">Review Completion</small>
+            <div class="progress mt-1">
+              <div class="progress-bar bg-success" style="width: 58%">58%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /dashboard -->
+
+
+  <!-- ── REVIEW DOCUMENTS ───────────────────────────────────────────────────── -->
   <div id="review" class="module">
     <h2 class="fw-bold">Review Documents</h2>
+    <p class="text-muted">Approve or request revisions for student submissions</p>
 
-    <div class="card-box mt-3">
+    <!-- FILTER BAR -->
+    <div class="card-box mt-3 mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-4">
+          <label>Filter by Type</label>
+          <select class="form-select" id="filterType">
+            <option value="">All Types</option>
+            <option>OJT Journal</option>
+            <option>Attendance</option>
+            <option>Report</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label>Filter by Status</label>
+          <select class="form-select" id="filterStatus">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Revision</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <button class="btn-custom w-100" onclick="filterTable()">Apply Filter</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">📋 Submission Queue</h6>
+        <span class="badge bg-secondary" id="reviewCount">4 submissions</span>
+      </div>
+
       <div class="table-responsive">
-        <table class="table">
-          <thead>
+        <table class="table table-hover align-middle" id="reviewTable">
+          <thead class="table-light">
             <tr>
+              <th>#</th>
               <th>Student</th>
               <th>Document</th>
+              <th>File</th>
               <th>Date</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
-
-          <tbody>
-            <tr>
+          <tbody id="reviewBody">
+            <tr data-type="OJT Journal" data-status="pending">
+              <td>1</td>
               <td>Juan Dela Cruz</td>
               <td>OJT Journal Week 1</td>
-              <td>2026-04-10</td>
-              <td>
-                <button class="btn-approve">Approve</button>
-                <button class="btn-reject">Reject</button>
+              <td><span class="file-name-badge">📎 Journal_Week1.docx</span></td>
+              <td>Apr 10, 2026</td>
+              <td><span class="status pending">Pending</span></td>
+              <td class="action-cell">
+                <button class="btn-approve" onclick="updateStatus(this, 'approved')">Approve</button>
+                <button class="btn-reject" onclick="updateStatus(this, 'rejected')">Revise</button>
               </td>
             </tr>
-
-            <tr>
+            <tr data-type="Attendance" data-status="pending">
+              <td>2</td>
               <td>Maria Santos</td>
               <td>Attendance Sheet</td>
-              <td>2026-04-08</td>
-              <td>
-                <button class="btn-approve">Approve</button>
-                <button class="btn-reject">Reject</button>
+              <td><span class="file-name-badge">📎 Attendance_April.xlsx</span></td>
+              <td>Apr 8, 2026</td>
+              <td><span class="status pending">Pending</span></td>
+              <td class="action-cell">
+                <button class="btn-approve" onclick="updateStatus(this, 'approved')">Approve</button>
+                <button class="btn-reject" onclick="updateStatus(this, 'rejected')">Revise</button>
+              </td>
+            </tr>
+            <tr data-type="Report" data-status="approved">
+              <td>3</td>
+              <td>Carlo Reyes</td>
+              <td>Final Report</td>
+              <td><span class="file-name-badge">📎 FinalReport_Carlo.pdf</span></td>
+              <td>Apr 5, 2026</td>
+              <td><span class="status approved">Approved</span></td>
+              <td class="action-cell">
+                <button class="btn-approve" onclick="updateStatus(this, 'approved')">Approve</button>
+                <button class="btn-reject" onclick="updateStatus(this, 'rejected')">Revise</button>
+              </td>
+            </tr>
+            <tr data-type="OJT Journal" data-status="rejected">
+              <td>4</td>
+              <td>Ana Lim</td>
+              <td>OJT Journal Week 2</td>
+              <td><span class="file-name-badge">📎 Journal_Week2_Ana.docx</span></td>
+              <td>Apr 3, 2026</td>
+              <td><span class="status rejected">Revision</span></td>
+              <td class="action-cell">
+                <button class="btn-approve" onclick="updateStatus(this, 'approved')">Approve</button>
+                <button class="btn-reject" onclick="updateStatus(this, 'rejected')">Revise</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
+  </div><!-- /review -->
 
-  <!-- STUDENTS -->
+
+  <!-- ── STUDENTS ───────────────────────────────────────────────────────────── -->
   <div id="students" class="module">
     <h2 class="fw-bold">Students</h2>
+    <p class="text-muted">List of students under your advisory</p>
 
-    <div class="card-box mt-3">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Juan Dela Cruz</td>
-            <td>BSIT</td>
-            <td>Active</td>
-          </tr>
-
-          <tr>
-            <td>Maria Santos</td>
-            <td>BSIT</td>
-            <td>Active</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- SEARCH -->
+    <div class="card-box mt-3 mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-5">
+          <label>Search Student</label>
+          <input type="text" class="form-control" id="studentSearch" placeholder="Name or student number..." oninput="filterStudents()">
+        </div>
+        <div class="col-md-4">
+          <label>Filter by Course</label>
+          <select class="form-select" id="courseFilter" onchange="filterStudents()">
+            <option value="">All Courses</option>
+            <option>BSIT</option>
+            <option>BSCS</option>
+            <option>BSIS</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Status</label>
+          <select class="form-select" id="statusFilter" onchange="filterStudents()">
+            <option value="">All</option>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- REPORTS -->
+    <div class="card-box">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">👥 Student List</h6>
+        <span class="badge bg-secondary" id="studentCount">5 students</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="studentTable">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Student No.</th>
+              <th>Course</th>
+              <th>Submissions</th>
+              <th>Progress</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="studentBody">
+            <tr data-course="BSIT" data-status="Active">
+              <td>1</td>
+              <td>Juan Dela Cruz</td>
+              <td>2021-00123</td>
+              <td>BSIT</td>
+              <td>3</td>
+              <td>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-success" style="width:60%"></div>
+                </div>
+                <small class="text-muted">60%</small>
+              </td>
+              <td><span class="status approved">Active</span></td>
+            </tr>
+            <tr data-course="BSIT" data-status="Active">
+              <td>2</td>
+              <td>Maria Santos</td>
+              <td>2021-00145</td>
+              <td>BSIT</td>
+              <td>2</td>
+              <td>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-success" style="width:40%"></div>
+                </div>
+                <small class="text-muted">40%</small>
+              </td>
+              <td><span class="status approved">Active</span></td>
+            </tr>
+            <tr data-course="BSCS" data-status="Active">
+              <td>3</td>
+              <td>Carlo Reyes</td>
+              <td>2021-00167</td>
+              <td>BSCS</td>
+              <td>5</td>
+              <td>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-success" style="width:100%"></div>
+                </div>
+                <small class="text-muted">100%</small>
+              </td>
+              <td><span class="status approved">Active</span></td>
+            </tr>
+            <tr data-course="BSIT" data-status="Active">
+              <td>4</td>
+              <td>Ana Lim</td>
+              <td>2021-00189</td>
+              <td>BSIT</td>
+              <td>2</td>
+              <td>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-warning" style="width:40%"></div>
+                </div>
+                <small class="text-muted">40%</small>
+              </td>
+              <td><span class="status pending">Active</span></td>
+            </tr>
+            <tr data-course="BSIS" data-status="Inactive">
+              <td>5</td>
+              <td>Paolo Cruz</td>
+              <td>2021-00201</td>
+              <td>BSIS</td>
+              <td>0</td>
+              <td>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-danger" style="width:0%"></div>
+                </div>
+                <small class="text-muted">0%</small>
+              </td>
+              <td><span class="status rejected">Inactive</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /students -->
+
+
+  <!-- ── REPORTS ─────────────────────────────────────────────────────────────── -->
   <div id="reports" class="module">
     <h2 class="fw-bold">Reports</h2>
+    <p class="text-muted">Generate and review summaries of student OJT performance</p>
 
-    <div class="card-box mt-3">
-      <p class="text-muted">Generate summaries of student performance.</p>
-
-      <button class="btn btn-dark">Generate Report</button>
+    <!-- SUMMARY CARDS -->
+    <div class="row g-3 mt-2 mb-4">
+      <div class="col-md-4">
+        <div class="card-box text-center">
+          <h3>18</h3>
+          <small>Total Students</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box text-center">
+          <h3>72%</h3>
+          <small>Avg. Completion Rate</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box text-center">
+          <h3>3</h3>
+          <small>Needing Attention</small>
+        </div>
+      </div>
     </div>
-  </div>
 
-</div>
+    <div class="row g-3">
+
+      <!-- COMPLETION OVERVIEW -->
+      <div class="col-lg-7">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">📈 Student Completion Overview</h6>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Student</th>
+                  <th>Submitted</th>
+                  <th>Approved</th>
+                  <th>Completion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Juan Dela Cruz</td>
+                  <td>3</td>
+                  <td>2</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-success" style="width:60%"></div>
+                    </div>
+                    <small>60%</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Maria Santos</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-warning" style="width:40%"></div>
+                    </div>
+                    <small>40%</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Carlo Reyes</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-success" style="width:100%"></div>
+                    </div>
+                    <small>100%</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ana Lim</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-danger" style="width:20%"></div>
+                    </div>
+                    <small>20%</small>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERATE REPORT -->
+      <div class="col-lg-5">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">⚙️ Generate Report</h6>
+          <p class="text-muted small mb-3">Export a summary of all student submissions and statuses.</p>
+
+          <div class="mb-3">
+            <label>Report Type</label>
+            <select class="form-select">
+              <option>All Students Summary</option>
+              <option>Pending Submissions</option>
+              <option>Approved Documents</option>
+              <option>Completion Rate</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Date Range</label>
+            <div class="row g-2">
+              <div class="col-6">
+                <input type="date" class="form-control" placeholder="From">
+              </div>
+              <div class="col-6">
+                <input type="date" class="form-control" placeholder="To">
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-custom w-100">📥 Generate & Download</button>
+        </div>
+
+        <!-- REMINDER -->
+        <div class="guide-reminder mt-3">
+          <strong>📌 Note:</strong>
+          <ul>
+            <li>Reports are generated based on current data.</li>
+            <li>Exported as PDF or CSV format.</li>
+            <li>Keep records for accreditation purposes.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /reports -->
+
+</div><!-- /main -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/adviser.js"></script>
+<script src="assets/js/adviser.js"></script>
 
 </body>
 </html>

@@ -3,12 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>PapeLESS - Admin</title>
+  <title>PapeLESS - Admin Dashboard</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- YOUR ADMIN CSS -->
   <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 
@@ -17,51 +14,568 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
   <h3>PapeLESS</h3>
-
-  <div class="nav-item">🏠 Dashboard</div>
-  <div class="nav-item">👥 Users</div>
-  <div class="nav-item">📄 Submissions</div>
-  <div class="nav-item">📊 Reports</div>
+  <div class="nav-item" onclick="showModule('dashboard')">🏠 Dashboard</div>
+  <div class="nav-item" onclick="showModule('users')">👥 Users</div>
+  <div class="nav-item" onclick="showModule('submissions')">📄 Submissions</div>
+  <div class="nav-item" onclick="showModule('announcements')">📢 Announcements</div>
+  <div class="nav-item" onclick="showModule('reports')">📊 Reports</div>
   <div class="nav-item" onclick="logout()">🚪 Logout</div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-  <h2 class="fw-bold">Admin Dashboard</h2>
-  <p class="text-muted">System overview & control panel</p>
+  <!-- ── DASHBOARD ──────────────────────────────────────────────────────────── -->
+  <div id="dashboard" class="module active-module">
+    <h2 class="fw-bold">Admin Dashboard</h2>
+    <p class="text-muted">System overview & control panel</p>
 
-  <div class="row g-3 mt-3">
-
-    <div class="col-md-4">
-      <div class="card-box text-center">
-        <h3>120</h3>
-        <small>Total Users</small>
+    <!-- STATS -->
+    <div class="row g-3 mt-2 mb-4">
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>120</h3>
+          <small>Total Users</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>18</h3>
+          <small>Total Students</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>45</h3>
+          <small>Pending Documents</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>78</h3>
+          <small>Approved</small>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card-box text-center">
-        <h3>45</h3>
-        <small>Pending Documents</small>
+    <div class="row g-3">
+
+      <!-- RECENT ACTIVITY -->
+      <div class="col-lg-7">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">🕐 Recent System Activity</h6>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Juan Dela Cruz</td>
+                  <td><span class="role-badge student">Student</span></td>
+                  <td>Submitted OJT Journal</td>
+                  <td><small class="text-muted">Today, 9:12 AM</small></td>
+                </tr>
+                <tr>
+                  <td>Prof. Reyes</td>
+                  <td><span class="role-badge adviser">Adviser</span></td>
+                  <td>Approved Attendance Sheet</td>
+                  <td><small class="text-muted">Today, 8:45 AM</small></td>
+                </tr>
+                <tr>
+                  <td>Maria Santos</td>
+                  <td><span class="role-badge student">Student</span></td>
+                  <td>Submitted Attendance Sheet</td>
+                  <td><small class="text-muted">Yesterday, 4:30 PM</small></td>
+                </tr>
+                <tr>
+                  <td>Prof. Cruz</td>
+                  <td><span class="role-badge adviser">Adviser</span></td>
+                  <td>Requested revision on Final Report</td>
+                  <td><small class="text-muted">Yesterday, 2:10 PM</small></td>
+                </tr>
+                <tr>
+                  <td>Admin</td>
+                  <td><span class="role-badge admin">Admin</span></td>
+                  <td>Added new announcement</td>
+                  <td><small class="text-muted">Apr 19, 10:00 AM</small></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK ACTIONS + SYSTEM STATUS -->
+      <div class="col-lg-5 d-flex flex-column gap-3">
+
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">⚡ Quick Actions</h6>
+          <div class="d-flex flex-column gap-2">
+            <button class="btn-custom w-100 text-start" onclick="showModule('users')">
+              👥 &nbsp;Manage Users
+            </button>
+            <button class="btn-custom w-100 text-start" onclick="showModule('announcements')">
+              📢 &nbsp;Post Announcement
+            </button>
+            <button class="btn-custom w-100 text-start" onclick="showModule('reports')">
+              📊 &nbsp;Generate System Report
+            </button>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">📌 Document Status Breakdown</h6>
+          <div class="status-item">
+            <div><strong>Pending Review</strong></div>
+            <span class="status pending">45 docs</span>
+          </div>
+          <div class="status-item">
+            <div><strong>Approved</strong></div>
+            <span class="status approved">78 docs</span>
+          </div>
+          <div class="status-item">
+            <div><strong>For Revision</strong></div>
+            <span class="status rejected">12 docs</span>
+          </div>
+          <div class="mt-3">
+            <small class="text-muted">System Completion Rate</small>
+            <div class="progress mt-1">
+              <div class="progress-bar bg-success" style="width: 58%">58%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /dashboard -->
+
+
+  <!-- ── USERS ──────────────────────────────────────────────────────────────── -->
+  <div id="users" class="module">
+    <h2 class="fw-bold">User Management</h2>
+    <p class="text-muted">Manage student and adviser accounts</p>
+
+    <!-- FILTER + ADD -->
+    <div class="card-box mt-3 mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-4">
+          <label>Search User</label>
+          <input type="text" class="form-control" id="userSearch" placeholder="Name or email..." oninput="filterUsers()">
+        </div>
+        <div class="col-md-3">
+          <label>Role</label>
+          <select class="form-select" id="roleFilter" onchange="filterUsers()">
+            <option value="">All Roles</option>
+            <option>Student</option>
+            <option>Adviser</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Status</label>
+          <select class="form-select" id="userStatusFilter" onchange="filterUsers()">
+            <option value="">All</option>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <button class="btn-custom w-100" onclick="showAddUserForm()">+ Add User</button>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card-box text-center">
-        <h3>78</h3>
-        <small>Approved</small>
+    <!-- ADD USER FORM (hidden by default) -->
+    <div class="card-box mb-3" id="addUserForm" style="display:none;">
+      <h6 class="fw-bold mb-3">➕ Add New User</h6>
+      <div class="row g-2">
+        <div class="col-md-4">
+          <label>Full Name</label>
+          <input type="text" class="form-control" id="newUserName" placeholder="Full name">
+        </div>
+        <div class="col-md-4">
+          <label>Email</label>
+          <input type="email" class="form-control" id="newUserEmail" placeholder="Email address">
+        </div>
+        <div class="col-md-2">
+          <label>Role</label>
+          <select class="form-select" id="newUserRole">
+            <option>Student</option>
+            <option>Adviser</option>
+          </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end gap-1">
+          <button class="btn-custom flex-grow-1" onclick="addUser()">Save</button>
+          <button class="btn-outline-cancel flex-grow-1" onclick="hideAddUserForm()">Cancel</button>
+        </div>
       </div>
     </div>
 
-  </div>
+    <div class="card-box">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">👥 All Users</h6>
+        <span class="badge bg-secondary" id="userCount">7 users</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="userTable">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="userBody">
+            <tr data-role="Student" data-status="Active">
+              <td>1</td><td>Juan Dela Cruz</td><td>juan@school.edu</td>
+              <td><span class="role-badge student">Student</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="Student" data-status="Active">
+              <td>2</td><td>Maria Santos</td><td>maria@school.edu</td>
+              <td><span class="role-badge student">Student</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="Student" data-status="Active">
+              <td>3</td><td>Carlo Reyes</td><td>carlo@school.edu</td>
+              <td><span class="role-badge student">Student</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="Student" data-status="Inactive">
+              <td>4</td><td>Paolo Cruz</td><td>paolo@school.edu</td>
+              <td><span class="role-badge student">Student</span></td>
+              <td><span class="status rejected">Inactive</span></td>
+              <td><button class="btn-activate" onclick="toggleStatus(this)">Activate</button></td>
+            </tr>
+            <tr data-role="Adviser" data-status="Active">
+              <td>5</td><td>Prof. Reyes</td><td>reyes@school.edu</td>
+              <td><span class="role-badge adviser">Adviser</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="Adviser" data-status="Active">
+              <td>6</td><td>Prof. Cruz</td><td>cruz@school.edu</td>
+              <td><span class="role-badge adviser">Adviser</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="Student" data-status="Active">
+              <td>7</td><td>Ana Lim</td><td>ana@school.edu</td>
+              <td><span class="role-badge student">Student</span></td>
+              <td><span class="status approved">Active</span></td>
+              <td><button class="btn-deactivate" onclick="toggleStatus(this)">Deactivate</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /users -->
 
-</div>
 
-<!-- SCRIPTS -->
+  <!-- ── SUBMISSIONS ────────────────────────────────────────────────────────── -->
+  <div id="submissions" class="module">
+    <h2 class="fw-bold">All Submissions</h2>
+    <p class="text-muted">System-wide view of all student document submissions</p>
+
+    <!-- FILTER -->
+    <div class="card-box mt-3 mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-3">
+          <label>Filter by Type</label>
+          <select class="form-select" id="subTypeFilter">
+            <option value="">All Types</option>
+            <option>OJT Journal</option>
+            <option>Attendance</option>
+            <option>Report</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Filter by Status</label>
+          <select class="form-select" id="subStatusFilter">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Revision</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Filter by Adviser</label>
+          <select class="form-select" id="adviserFilter">
+            <option value="">All Advisers</option>
+            <option>Prof. Reyes</option>
+            <option>Prof. Cruz</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button class="btn-custom w-100" onclick="filterSubmissions()">Apply Filter</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">📄 Submission Records</h6>
+        <span class="badge bg-secondary" id="subCount">6 submissions</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="subTable">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Student</th>
+              <th>Document</th>
+              <th>Adviser</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="subBody">
+            <tr data-type="OJT Journal" data-status="pending" data-adviser="Prof. Reyes">
+              <td>1</td><td>Juan Dela Cruz</td><td>OJT Journal Week 1</td>
+              <td>Prof. Reyes</td><td>Apr 10, 2026</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr data-type="Attendance" data-status="pending" data-adviser="Prof. Reyes">
+              <td>2</td><td>Maria Santos</td><td>Attendance Sheet</td>
+              <td>Prof. Reyes</td><td>Apr 8, 2026</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr data-type="Report" data-status="approved" data-adviser="Prof. Cruz">
+              <td>3</td><td>Carlo Reyes</td><td>Final Report</td>
+              <td>Prof. Cruz</td><td>Apr 5, 2026</td>
+              <td><span class="status approved">Approved</span></td>
+            </tr>
+            <tr data-type="OJT Journal" data-status="rejected" data-adviser="Prof. Cruz">
+              <td>4</td><td>Ana Lim</td><td>OJT Journal Week 2</td>
+              <td>Prof. Cruz</td><td>Apr 3, 2026</td>
+              <td><span class="status rejected">Revision</span></td>
+            </tr>
+            <tr data-type="Attendance" data-status="approved" data-adviser="Prof. Reyes">
+              <td>5</td><td>Juan Dela Cruz</td><td>Attendance Sheet</td>
+              <td>Prof. Reyes</td><td>Apr 1, 2026</td>
+              <td><span class="status approved">Approved</span></td>
+            </tr>
+            <tr data-type="Report" data-status="pending" data-adviser="Prof. Cruz">
+              <td>6</td><td>Paolo Cruz</td><td>Final Report Draft</td>
+              <td>Prof. Cruz</td><td>Mar 28, 2026</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /submissions -->
+
+
+  <!-- ── ANNOUNCEMENTS ──────────────────────────────────────────────────────── -->
+  <div id="announcements" class="module">
+    <h2 class="fw-bold">Announcements</h2>
+    <p class="text-muted">Post and manage system-wide announcements for students and advisers</p>
+
+    <!-- POST FORM -->
+    <div class="card-box mt-3 mb-3">
+      <h6 class="fw-bold mb-3">📢 Post New Announcement</h6>
+      <div class="row g-2">
+        <div class="col-md-8">
+          <label>Title</label>
+          <input type="text" class="form-control mb-2" id="announcementTitle" placeholder="Announcement title...">
+          <label>Message</label>
+          <textarea class="form-control" id="announcementBody" rows="3" placeholder="Write your announcement here..."></textarea>
+        </div>
+        <div class="col-md-4">
+          <label>Target Audience</label>
+          <select class="form-select mb-2" id="announcementTarget">
+            <option>All Users</option>
+            <option>Students Only</option>
+            <option>Advisers Only</option>
+          </select>
+          <label>Priority</label>
+          <select class="form-select mb-3" id="announcementPriority">
+            <option value="normal">Normal</option>
+            <option value="urgent">Urgent</option>
+          </select>
+          <button class="btn-custom w-100" onclick="postAnnouncement()">📤 Post Announcement</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSTED ANNOUNCEMENTS -->
+    <div class="card-box">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">📋 Posted Announcements</h6>
+        <span class="badge bg-secondary" id="announcementCount">2 announcements</span>
+      </div>
+      <div id="announcementList">
+
+        <div class="announcement-card urgent">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <strong>⚠ Deadline Reminder: Final Report</strong>
+              <span class="role-badge ms-2" style="background:#f8d7da;color:#721c24;">Urgent</span>
+              <span class="role-badge ms-1 student">Students Only</span>
+            </div>
+            <small class="text-muted">Apr 19, 2026</small>
+          </div>
+          <p class="mt-2 mb-1 text-muted small">
+            Please be reminded that the Final Report is due on May 5. Ensure your document is complete and follows the required format.
+          </p>
+          <button class="btn-delete-sm" onclick="deleteAnnouncement(this)">🗑 Delete</button>
+        </div>
+
+        <div class="announcement-card normal mt-2">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <strong>📘 Updated Internship Guidelines</strong>
+              <span class="role-badge ms-2" style="background:#d4edda;color:#155724;">Normal</span>
+              <span class="role-badge ms-1 student">All Users</span>
+            </div>
+            <small class="text-muted">Apr 15, 2026</small>
+          </div>
+          <p class="mt-2 mb-1 text-muted small">
+            New internship guidelines have been uploaded. Please review the updated requirements under the Forms section.
+          </p>
+          <button class="btn-delete-sm" onclick="deleteAnnouncement(this)">🗑 Delete</button>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /announcements -->
+
+
+  <!-- ── REPORTS ─────────────────────────────────────────────────────────────── -->
+  <div id="reports" class="module">
+    <h2 class="fw-bold">System Reports</h2>
+    <p class="text-muted">Generate and export system-wide OJT performance summaries</p>
+
+    <!-- SUMMARY STATS -->
+    <div class="row g-3 mt-2 mb-4">
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>120</h3>
+          <small>Total Users</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>135</h3>
+          <small>Total Submissions</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>58%</h3>
+          <small>Avg. Completion</small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box text-center">
+          <h3>12</h3>
+          <small>Flagged for Revision</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- ADVISER SUMMARY TABLE -->
+      <div class="col-lg-7">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">👨‍🏫 Adviser Summary</h6>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Adviser</th>
+                  <th>Students</th>
+                  <th>Reviewed</th>
+                  <th>Pending</th>
+                  <th>Completion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Prof. Reyes</td><td>10</td><td>32</td><td>8</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-success" style="width:80%"></div>
+                    </div>
+                    <small>80%</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Prof. Cruz</td><td>8</td><td>20</td><td>12</td>
+                  <td>
+                    <div class="progress" style="height:10px;">
+                      <div class="progress-bar bg-warning" style="width:62%"></div>
+                    </div>
+                    <small>62%</small>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERATE REPORT -->
+      <div class="col-lg-5">
+        <div class="card-box">
+          <h6 class="fw-bold mb-3">⚙️ Generate Report</h6>
+          <p class="text-muted small mb-3">Export a full system summary for accreditation or review.</p>
+
+          <div class="mb-3">
+            <label>Report Type</label>
+            <select class="form-select">
+              <option>System Overview</option>
+              <option>All Submissions</option>
+              <option>Per Adviser Summary</option>
+              <option>Pending Documents</option>
+              <option>Completion Rate</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Date Range</label>
+            <div class="row g-2">
+              <div class="col-6">
+                <input type="date" class="form-control">
+              </div>
+              <div class="col-6">
+                <input type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-custom w-100">📥 Generate & Download</button>
+        </div>
+
+        <div class="guide-reminder mt-3">
+          <strong>📌 Note:</strong>
+          <ul>
+            <li>Reports reflect current system data.</li>
+            <li>Exported as PDF or CSV format.</li>
+            <li>Keep records for accreditation purposes.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /reports -->
+
+</div><!-- /main -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- YOUR ADMIN JS -->
 <script src="assets/js/admin.js"></script>
 
 </body>

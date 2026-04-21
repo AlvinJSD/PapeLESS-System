@@ -8,6 +8,7 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── SIDEBAR ──────────────────────────────────────────────────────────────── */
 .sidebar {
   height: 100vh;
   background: linear-gradient(135deg, #6b0000, #800000);
@@ -35,6 +36,7 @@ body {
   background: rgba(255,255,255,0.15);
 }
 
+/* ─── MAIN ─────────────────────────────────────────────────────────────────── */
 .main {
   margin-left: 225px;
   padding: 20px 24px;
@@ -50,6 +52,7 @@ body {
   margin-bottom: 0;
 }
 
+/* ─── CARD BOX ─────────────────────────────────────────────────────────────── */
 .card-box {
   background: white;
   border-radius: 12px;
@@ -57,19 +60,11 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
-.card-box h6 {
-  font-size: 0.85rem;
-}
+.card-box h6 { font-size: 0.85rem; }
+.card-box h3 { font-size: 1.5rem; margin-bottom: 2px; }
+.card-box small { font-size: 0.75rem; }
 
-.card-box h3 {
-  font-size: 1.5rem;
-  margin-bottom: 2px;
-}
-
-.card-box small {
-  font-size: 0.75rem;
-}
-
+/* ─── UPLOAD BOX ───────────────────────────────────────────────────────────── */
 .upload-box {
   border: 2px dashed #800000;
   border-radius: 12px;
@@ -78,6 +73,7 @@ body {
   font-size: 0.82rem;
 }
 
+/* ─── BUTTON ───────────────────────────────────────────────────────────────── */
 .btn-custom {
   background: linear-gradient(135deg, #800000, #ff1717);
   border: none;
@@ -87,6 +83,7 @@ body {
   font-size: 0.8rem;
 }
 
+/* ─── STATUS BADGES ────────────────────────────────────────────────────────── */
 .status {
   padding: 3px 8px;
   border-radius: 20px;
@@ -94,21 +91,21 @@ body {
   font-weight: bold;
 }
 
-.pending { background: #fff3cd; color: #856404; }
+.pending  { background: #fff3cd; color: #856404; }
 .approved { background: #d4edda; color: #155724; }
 .rejected { background: #f8d7da; color: #721c24; }
 
+/* ─── MODULE VISIBILITY ────────────────────────────────────────────────────── */
 .module { display: none; }
 .active-module { display: block; }
 
+/* ─── MISC ─────────────────────────────────────────────────────────────────── */
 .list-group-item {
   font-size: 0.82rem;
   padding: 7px 12px;
 }
 
-.progress {
-  height: 16px;
-}
+.progress { height: 16px; }
 
 .row.g-3 {
   --bs-gutter-y: 0.6rem;
@@ -124,23 +121,135 @@ label {
   margin-bottom: 2px;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
   font-size: 0.82rem;
   padding: 7px 10px;
   border-radius: 8px;
 }
 
-.table {
-  font-size: 0.82rem;
+.table { font-size: 0.82rem; }
+
+/* ─── STATUS ITEM (dashboard tracker) ─────────────────────────────────────── */
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
+.status-item:last-of-type { border-bottom: none; }
+
+/* ─── GUIDE SECTION ────────────────────────────────────────────────────────── */
+.guide-intro p {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.guide-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  height: 100%;
+}
+
+.guide-card:hover { transform: translateY(-4px); }
+
+.guide-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.guide-card h6 {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.guide-card p {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.guide-reminder {
+  background: #fff8e1;
+  border-left: 5px solid #ffc107;
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.guide-reminder ul {
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+
+.guide-reminder li {
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+/* ─── RESOURCE CARDS ───────────────────────────────────────────────────────── */
+.resource-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+}
+
+.resource-card:hover { transform: translateY(-3px); }
+
+.resource-icon { font-size: 24px; }
+
+/* ─── TEMPLATE CARDS ───────────────────────────────────────────────────────── */
+.template-card {
+  transition: 0.3s ease;
+  border-radius: 12px;
+}
+
+.template-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* ─── SUBMISSION HISTORY TABLE ─────────────────────────────────────────────── */
+.file-name-badge {
+  background: #f1f3f5;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.82rem;
+  color: #444;
+  white-space: nowrap;
+}
+
+#submissionTable thead th {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  border-bottom: 2px solid #dee2e6;
+}
+
+#submissionTable tbody tr:hover {
+  background-color: rgba(0,0,0,0.02);
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {
     position: relative;
     width: 100%;
     height: auto;
   }
-  .main {
-    margin-left: 0;
-  }
+
+  .main { margin-left: 0; }
+
+  .guide-card { padding: 12px; }
 }
